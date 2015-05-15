@@ -1,5 +1,7 @@
 # gift-wrap
-Gift wraps your website
+_Gift wraps your website._
+
+Quick and dirty, you probably don't want to use this, unless it's for something intended to be quick and dirty ;)
 
 ### [Demo](http://mesoptier.github.io/gift-wrap/test/)
 
