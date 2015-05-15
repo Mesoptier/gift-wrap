@@ -18,8 +18,14 @@
 .gift-wrapped {
   overflow: hidden;
 
+  * {
+    box-sizing: content-box !important;
+  }
+
   .gift-wrap {
     position: fixed;
+    z-index: 999999;
+
     top: 0; bottom: 0;
     left: 0; right: 0;
     margin: -10px;
