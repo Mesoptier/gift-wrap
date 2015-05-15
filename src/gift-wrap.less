@@ -1,0 +1,157 @@
+@import url(http://fonts.googleapis.com/css?family=Indie+Flower);
+
+@color-paper: #E9F2EF;
+@color-paper-accent: darken(@color-paper, 3%);
+@color-ribbon: #EC173A;
+@color-text: #506B63;
+
+@size-ribbon: 80px;
+
+.icon-replace-fill(@src, @fill-default, @fill-new) {
+  @escape-fill-default: escape(@fill-default);
+  @escape-fill-new: escape(@fill-new);
+  @data-uri: data-uri('image/svg+xml;charset=UTF-8', "@{src}");
+  @replace-src: replace("@{data-uri}", "@{escape-fill-default}", "@{escape-fill-new}");
+  background-image:e(@replace-src);
+}
+
+.gift-wrapped {
+  overflow: hidden;
+
+  .gift-wrap {
+    position: fixed;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
+    margin: -10px;
+
+    font: 30px 'Indie Flower', cursive;
+
+    .next {
+      cursor: pointer;
+    }
+
+    .paper {
+      content: '';
+      position: absolute;
+      z-index: 5;
+      top: 0; bottom: 0;
+
+      padding-left: @size-ribbon / 2;
+
+      background-color: @color-paper;
+      background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, @color-paper-accent 35px, @color-paper-accent 70px);
+      box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+
+      transition: box-shadow 100ms, right 500ms ease-in,
+        left 500ms ease-in, margin 500ms ease-in, transform 400ms ease-in 100ms;
+
+      &.next:hover {
+        box-shadow: 0 0 15px 0 rgba(0,0,0,0.3);
+      }
+
+      &.left {
+        width: 30%;
+        right: 70%;
+        margin-right: @size-ribbon / -2;
+
+        &.clicked {
+          margin-right: 20px;
+          right: 100%;
+
+          transform-origin: 100% 100%;
+          transform: rotate(-10deg);
+        }
+      }
+
+      &.right {
+        width: 70%;
+        left: 30%;
+        margin-left: @size-ribbon / 2;
+
+        &.clicked {
+          margin-left: 20px;
+          left: 100%;
+
+          transform-origin: 0 0;
+          transform: rotate(-10deg);
+        }
+      }
+    }
+
+    .ribbon {
+      position: absolute;
+      z-index: 10;
+
+      width: @size-ribbon;
+      height: @size-ribbon;
+
+      background-color: @color-ribbon;
+      background-size: 6px 6px;
+      box-shadow:
+        0 0 2px 2px rgba(0,0,0,0.2),
+        0 0 0 6px rgba(0,0,0,0.1) inset;
+
+      transition: box-shadow 100ms, top 500ms ease-in,
+        left 500ms ease-in, transform 400ms ease-in 100ms;
+
+      &.next:hover {
+        box-shadow:
+          0 0 6px 2px rgba(0,0,0,0.3),
+          0 0 0 6px rgba(0,0,0,0.1) inset;
+      }
+
+      &.vertical {
+        height: 100%;
+        top: 0;
+        left: 30%;
+        background-image: linear-gradient(0deg, rgba(0,0,0,.07) 50%, transparent 50%);
+
+        &.clicked {
+          top: 100%;
+          transform: rotate(-2deg);
+        }
+      }
+
+      &.horizontal {
+        width: 100%;
+        top: 30%;
+        left: 0;
+        background-image: linear-gradient(90deg, rgba(0,0,0,.07) 50%, transparent 50%);
+
+        &.clicked {
+          left: 100%;
+          transform: rotate(2deg);
+        }
+      }
+    }
+
+    .message {
+      position: absolute;
+      z-index: 15;
+      top: 30%;
+
+      margin: @size-ribbon + 100px 0 0 20px;
+      width: 500px;
+
+      color: @color-text;
+      transform: rotate(-10deg);
+      transform-origin: 0 0;
+
+      &:before {
+        position: absolute;
+        top: -75px; left: 0;
+
+        content: '';
+        display: block;
+        width: 60px;
+        height: 60px;
+
+        .icon-replace-fill('./arrow.svg', 'COLOR_PLACEHOLDER', '@{color-text}');
+        background-size: 100% 100%;
+
+        transform: rotate(-25deg);
+      }
+    }
+
+  }
+}

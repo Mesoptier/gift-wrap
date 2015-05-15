@@ -1,0 +1,17 @@
+{
+  "name": "gift-wrap",
+  "version": "0.0.1",
+  "main": ["./dist/gift-wrap.min.css", "./dist/gift-wrap.min.js"],
+  "authors": [
+    "Koen Klaren <koen.klaren@gmail.com>"
+  ],
+  "description": "Gift wraps your website",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
