@@ -1,4 +1,7 @@
 function GiftWrap(message) {
+  if (localStorage.getItem('gift-wrap:unwrapped'))
+    return;
+
   function div(className, innerText) {
     var el = document.createElement('div');
     if(className) el.className = className;
@@ -40,6 +43,7 @@ function GiftWrap(message) {
         setTimeout(function () {
           document.body.removeChild(e.container);
           document.body.classList.remove('gift-wrapped');
+          localStorage.setItem('gift-wrap:unwrapped', true);
         }, 500);
       }
     }
